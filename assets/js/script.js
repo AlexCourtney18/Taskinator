@@ -245,7 +245,26 @@ var loadTasks = function() {
   for (var i = 0; i < tasks.length; i++) {
     tasks[i].id = taskIdCounter;
 
-    console.log(tasks[i]);
+    var listItemEl = document.createElement("li");
+    listItemEl.className = "task-item";
+    listItemEl.setAttribute("data-task-id", tasks[i].id);
+
+    var taskInfoEl = document.createElement("div");
+    taskInfoEl.className = "task-info";
+    taskInfoEl.innerHTML = "<h3 class='task-name'>" + tasks[i].name + "</h3><span class='task-type'>" + tasks[i].type + "</span";
+    listItemEl.appendChild(taskInfoEl);
+
+    var taskActionsEl = createTaskActions(tasks[i].id);
+    listItemEl.appendChild(taskActionsEl);
+
+    if (tasks[i] === "to do") {
+        listItemEl.querySelector("select[name='status-change']").selectedIndex;
+    }
+
+
+
+    console.log(listItemEl);
+    //console.log(tasks[i]);
   } 
 }
 
