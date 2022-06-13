@@ -34,7 +34,7 @@ else {
         name: taskNameInput,
         type: taskTypeInput,
         status: "to do"
-    };
+    }
 
     createTaskEl(taskDataObj);
 }
@@ -87,6 +87,7 @@ var createTaskEl = function (taskDataObj) {
     tasksToDoEl.appendChild(listItemEl);
 
     taskDataObj.id = taskIdCounter;
+
     tasks.push(taskDataObj);
 
     // increase task counter for next unique id
@@ -232,5 +233,23 @@ var saveTasks = function() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
+// gets task items from localStorage
+//converts tasks from the string format back into an array of objects
+//iterates through a tasks array and creates task elements on the page from it
+
+var loadTasks = function() {
+  var tasks = localStorage.getItem("tasks");
+  tasks = JSON.parse(tasks);
+  console.log(tasks);
+
+  for (var i = 0; i < tasks.length; i++) {
+    tasks[i].id = taskIdCounter;
+
+    console.log(tasks[i]);
+  } 
+}
+
 pageContentEl.addEventListener("click", taskButtonHandler);
 pageContentEl.addEventListener("change", taskStatusChangeHandler);
+
+loadTasks();
