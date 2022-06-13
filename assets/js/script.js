@@ -267,6 +267,14 @@ var loadTasks = function() {
         tasksInProgressEl.appendChild(listItemEl);
     }
 
+    else if (task[i].status === "complete") {
+        listItemEl.querySelector("select[name='status-change']").selectedIndex = 2;
+        tasksCompletedEl.appendChild(listItemEl);
+    }
+
+    taskIdCounter++;
+    console.log(listItemEl);
+
 
 
     console.log(listItemEl);
