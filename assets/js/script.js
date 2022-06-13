@@ -257,8 +257,14 @@ var loadTasks = function() {
     var taskActionsEl = createTaskActions(tasks[i].id);
     listItemEl.appendChild(taskActionsEl);
 
-    if (tasks[i] === "to do") {
-        listItemEl.querySelector("select[name='status-change']").selectedIndex;
+    if (tasks[i].status === "to do") {
+        listItemEl.querySelector("select[name='status-change']").selectedIndex = 0;
+        tasksToDoEl.appendChild(listItemEl);
+    }
+
+    else if (tasks[i].status === "in progress") {
+        listItemEl.querySelector("select[name='status-change']").selectedIndex = 1;
+        tasksInProgressEl.appendChild(listItemEl);
     }
 
 
